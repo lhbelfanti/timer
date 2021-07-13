@@ -11,7 +11,7 @@ const TimerPage = () => {
   return (
     <Box className={"box"}>
       <Paper
-        elevation={3}
+        elevation={20}
         className={"main-container"}>
         <div
           className={"sub-container"}>
