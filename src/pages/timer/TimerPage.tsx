@@ -4,8 +4,11 @@ import MultipliersSection from "./sections/MultipliersSection";
 import "../../styles/pages/timer/timer-page.css"
 import { Box, Paper } from "@material-ui/core";
 import CountdownTimerSection from "./sections/CountdownTimerSection";
+import * as data from "../config.json"
 
 const TimerPage = () => {
+  const { timer } = data;
+  const { countdownInputSection, countdownTimerSection, multiplierSection } = timer;
   return (
     <Box className={"box"}>
       <Paper
@@ -14,17 +17,17 @@ const TimerPage = () => {
         <div
           className={"sub-container"}>
           <CountdownInputSection
-            label={"Countdown"}
-            buttonText={"Start"}/>
+            label={countdownInputSection.countdownLabel}
+            buttonText={countdownInputSection.startButton}/>
           <CountdownTimerSection
-            halfwayWarning={0.5}
-            colorWarning={20}
-            blinkWarning={10}
-            halfwayWarningText={"More than halfway there!"}
-            timesUpText={"Time’s up!"}/>
+            halfwayWarning={countdownTimerSection.halfwayWarningPercentage}
+            colorWarning={countdownTimerSection.colorWarningStartingAtSecond}
+            blinkWarning={countdownTimerSection.blinkWarningStartingAtSecond}
+            halfwayWarningText={countdownTimerSection.halfwayWarningInfoText}
+            timesUpText={countdownTimerSection.timesUpInfoText}/>
           <MultipliersSection
-            multipliers={[1, 1.5, 2]}
-            defaultIndex={0}/>
+            multipliers={multiplierSection.multipliers}
+            defaultIndex={multiplierSection.defaultSelectedMultiplierIndex}/>
         </div>
       </Paper>
     </Box>

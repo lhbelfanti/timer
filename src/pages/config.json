@@ -1,0 +1,19 @@
+{
+  "timer": {
+    "countdownInputSection": {
+      "countdownLabel": "Countdown",
+      "startButton": "Start"
+    },
+    "countdownTimerSection": {
+      "halfwayWarningPercentage": 0.5,
+      "colorWarningStartingAtSecond": 20,
+      "blinkWarningStartingAtSecond": 10,
+      "halfwayWarningInfoText": "More than halfway there!",
+      "timesUpInfoText": "Time's up!"
+    },
+    "multiplierSection": {
+      "multipliers": [1, 1.5, 2],
+      "defaultSelectedMultiplierIndex": 0
+    }
+  }
+}
