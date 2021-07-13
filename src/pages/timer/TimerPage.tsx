@@ -7,8 +7,7 @@ import CountdownTimerSection from "./sections/CountdownTimerSection";
 import * as data from "../config.json"
 
 const TimerPage = () => {
-  const { timer } = data;
-  const { countdownInputSection, countdownTimerSection, multiplierSection } = timer;
+  const { countdownInputSection, countdownTimerSection, multiplierSection } = data.timer;
   return (
     <Box className={"box"}>
       <Paper
