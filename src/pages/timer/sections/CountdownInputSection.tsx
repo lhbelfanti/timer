@@ -14,7 +14,7 @@ interface CountdownInputSectionProps {
 
 const CountdownInputSection = (props: CountdownInputSectionProps) => {
   const [value, setValue] = useState("00:00");
-  const { updateTimer, triggerTimerEvent, resumeTimer } = useActions();
+  const { setTimer, triggerTimerEvent, resumeTimer } = useActions();
 
   const onInputDataChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
@@ -27,7 +27,7 @@ const CountdownInputSection = (props: CountdownInputSectionProps) => {
   const onButtonClick = () => {
     const time = stringToMinSec(value);
     resumeTimer();
-    updateTimer(time);
+    setTimer(time);
     triggerTimerEvent(TimerEvents.RESET);
   }
 
