@@ -1,0 +1,12 @@
+.multiplier-section-main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 0 50px;
+}
+
+.multiplier-button {
+  margin: 0 20px !important;
+}
