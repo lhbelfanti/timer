@@ -1,8 +1,8 @@
 {
   "timer": {
     "countdownInputSection": {
-      "countdownLabel": "Countdown",
-      "startButton": "Start"
+      "countdownLabelText": "Countdown",
+      "startButtonText": "Start"
     },
     "countdownTimerSection": {
       "halfwayWarningPercentage": 0.5,

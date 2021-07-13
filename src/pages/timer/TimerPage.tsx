@@ -16,8 +16,8 @@ const TimerPage = () => {
         <div
           className={"sub-container"}>
           <CountdownInputSection
-            label={countdownInputSection.countdownLabel}
-            buttonText={countdownInputSection.startButton}/>
+            label={countdownInputSection.countdownLabelText}
+            buttonText={countdownInputSection.startButtonText}/>
           <CountdownTimerSection
             halfwayWarning={countdownTimerSection.halfwayWarningPercentage}
             colorWarning={countdownTimerSection.colorWarningStartingAtSecond}
