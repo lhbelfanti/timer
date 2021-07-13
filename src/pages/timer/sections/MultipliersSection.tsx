@@ -21,11 +21,7 @@ const MultipliersSection = (props: MultipliersContainerProps) => {
       return buttonClicked;
     }
 
-    if (i === clickedId) {
-      return buttonClicked;
-    } else {
-      return buttonNotClicked;
-    }
+    return i === clickedId ? buttonClicked : buttonNotClicked;
   }
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { TimerEvents } from "../../../state/actions";
 import { stringToMinSec } from "../timerHelper";
@@ -14,7 +14,13 @@ interface CountdownInputSectionProps {
 
 const CountdownInputSection = (props: CountdownInputSectionProps) => {
   const [value, setValue] = useState("00:00");
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   const { setTimer, triggerTimerEvent, resumeTimer } = useActions();
+
+  useEffect(() => {
+    const v = value.split(":").join("").replaceAll("0", "");
+    setButtonDisabled(v.length === 0);
+  }, [value])
 
   const onInputDataChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
@@ -44,6 +50,7 @@ const CountdownInputSection = (props: CountdownInputSectionProps) => {
       <Button
         variant="contained"
         color="primary"
+        disabled={buttonDisabled}
         onClick={onButtonClick}
         className={"countdown-button"}>
         <div className={"countdown-button-label"}>
