@@ -22,7 +22,7 @@ I've spent 12 hours doing this project:
 This is a Single Page Application, so, it has a main component called `TimerPage` and that page has 3 different sections:
 - `CountdownInputSection` in charge of the top part of the timer. It handles the start of the timer.
 - `CoundownInputSection` the primary element. It shows the timer, the info panels and handles the pause and resume actions.
-- `MultipliersSection' the last of the sections that handles the change of the speed of the timer.
+- `MultipliersSection` the last of the sections that handles the change of the speed of the timer.
 
 A deeper explanation in the following image.
 
