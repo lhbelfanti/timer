@@ -22,22 +22,14 @@ interface CountdownTimerProps {
   blinkWarning: number
 }
 
-let counter = {min: 0, sec: 0};
-let textStyle = "";
+let cache = 0;
 let timerId: any = null;
-let firstWarningInSeconds = -1;
-let cacheFirstWarningSecs = -1;
 
 const CountdownTimer = (props: CountdownTimerProps) => {
   const [state, setState] = useState<CountdownTimerState>(initialState);
+  const [textStyle, setTextStyle] = useState("");
   const {data, event, paused, speed} = useTypedSelector((state) => state.timer);
-  const {triggerTimerEvent, updateTimer, pauseTimer} = useActions();
-
-  const restartTimer = (shouldPauseTimer: boolean = true) => {
-    triggerTimerEvent(null);
-    clearTimerInterval(shouldPauseTimer);
-    createNewTimer();
-  }
+  const {triggerTimerEvent, setTimer, pauseTimer} = useActions();
 
   const clearTimerInterval = (shouldPauseTimer: boolean = true) => {
     if (timerId !== null) {
@@ -48,24 +40,25 @@ const CountdownTimer = (props: CountdownTimerProps) => {
     timerId = null;
   }
 
-  const createNewTimer = () => {
-    cacheFirstWarningSecs = firstWarningInSeconds;
-    counter = {min: data.min, sec: data.sec};
-    firstWarningInSeconds = firstWarningToSeconds(counter.min, counter.sec, props.halfwayWarning, cacheFirstWarningSecs);
-    cacheFirstWarningSecs = -1;
-    setState({...state, minutes: counter.min, seconds: counter.sec});
-    timerId = setInterval(onTimerCountdown, speedToMilliseconds(speed));
+  const createNewTimer = (fromReset: boolean = true) => {
+    const firstWarnInSecs = fromReset ? firstWarningToSeconds(data, props.halfwayWarning) : cache;
+    if (cache === 0) cache = firstWarnInSecs;
+    setState({minutes: data.min, seconds: data.sec});
+    setTimer(data);
+    timerId = setInterval(() => {
+      onTimerCountdown(firstWarnInSecs);
+    }, speedToMilliseconds(speed));
   }
 
-  const onTimerCountdown = () => {
-    if (counter.min === 0 && counter.sec === 0) {
+  const onTimerCountdown = (firstWarningInSeconds: number) => {
+    if (data.min === 0 && data.sec === 0) {
       clearTimerInterval();
       return;
     }
 
-    counter = countdown(counter.min, counter.sec);
-    setState({...state, minutes: counter.min, seconds: counter.sec});
-    updateTimer(counter);
+    const counter = countdown(data);
+    setState({minutes: counter.min, seconds: counter.sec});
+    setTimer(counter);
 
     const total = counter.sec + (counter.min * 60);
     if (total === firstWarningInSeconds) {
@@ -76,23 +69,25 @@ const CountdownTimer = (props: CountdownTimerProps) => {
       triggerTimerEvent(TimerEvents.BLINK_WARNING);
     } else if (total === 0) {
       triggerTimerEvent(TimerEvents.TIME_IS_UP);
+      pauseTimer();
+      cache = 0;
     }
   }
 
-  // Component Update: Checks every possible state of the Timer and process the behaviours
   useEffect(() => {
     if (!paused) {
       switch (event) {
         case TimerEvents.RESET: {
-          restartTimer();
+          triggerTimerEvent(null);
+          clearTimerInterval();
+          createNewTimer();
           break;
         }
-        case TimerEvents.RESUME: {
-          restartTimer(false);
-          break;
-        }
-        case TimerEvents.SPEED_CHANGED: {
-          restartTimer(false);
+        case TimerEvents.RESUME:
+        case TimerEvents.SPEED_CHANGED:{
+          triggerTimerEvent(null);
+          clearTimerInterval(false);
+          createNewTimer(false);
           break;
         }
         case TimerEvents.HALFWAY_WARNING: {
@@ -101,17 +96,17 @@ const CountdownTimer = (props: CountdownTimerProps) => {
         }
         case TimerEvents.COLOR_WARNING: {
           triggerTimerEvent(null);
-          textStyle = "countdown-timer-red";
+          setTextStyle("countdown-timer-red");
           break;
         }
         case TimerEvents.BLINK_WARNING: {
           triggerTimerEvent(null);
-          textStyle = "countdown-timer-blink";
+          setTextStyle("countdown-timer-blink");
           break;
         }
         case TimerEvents.TIME_IS_UP: {
           triggerTimerEvent(null);
-          textStyle = "";
+          setTextStyle("");
           clearTimerInterval();
           break;
         }

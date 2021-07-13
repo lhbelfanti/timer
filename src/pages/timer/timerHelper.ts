@@ -1,5 +1,8 @@
-export const countdown = (min: number, sec: number) => {
-  let counter = {min: min, sec: sec};
+import { TimerData } from "../../state";
+
+export const countdown = (counter: TimerData) => {
+  console.log(`Before: ${JSON.stringify(counter)}`);
+
   if (counter.sec - 1 === -1) {
     counter.min -= 1;
     counter.sec = 59
@@ -7,6 +10,7 @@ export const countdown = (min: number, sec: number) => {
     counter.sec -= 1
   }
 
+  console.log(`After: ${JSON.stringify(counter)}`);
   return counter;
 }
 
@@ -15,10 +19,8 @@ export const stringToMinSec = (time: string) => {
   return { min: Number(data[0]), sec: Number(data[1]) }
 }
 
-export const firstWarningToSeconds = (min: number, sec: number, firstWarning: number, cache: number) => {
-  if (cache !== -1) {
-    return cache;
-  }
+export const firstWarningToSeconds = (counter: TimerData, firstWarning: number) => {
+  const {min, sec} = counter;
 
   let percentage = firstWarning;
   if (percentage > 1 || percentage < 0)
