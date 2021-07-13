@@ -1,11 +1,12 @@
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
+import { TimerData } from "../types";
 
 interface TimerState {
   event: string | null;
   speed: number;
   paused: boolean;
-  data: {min: number, sec: number};
+  data: TimerData;
 }
 
 const initialState = {
@@ -20,7 +21,7 @@ const reducer = (
   action: Action
 ): TimerState => {
   switch (action.type) {
-    case ActionType.TIMER_UPDATE:
+    case ActionType.SET_TIMER:
       return {...state, data: action.payload}
     case ActionType.TRIGGER_TIMER_EVENT:
       return {...state, event: action.payload}

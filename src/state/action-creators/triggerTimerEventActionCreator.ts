@@ -7,6 +7,6 @@ export const triggerTimerEvent = (event: TimerEvent) => {
     dispatch ({
       type: ActionType.TRIGGER_TIMER_EVENT,
       payload: event
-    })
+    });
   }
 }

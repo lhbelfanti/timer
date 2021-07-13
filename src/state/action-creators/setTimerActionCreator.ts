@@ -1,12 +1,13 @@
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
 import { Dispatch } from "react";
+import { TimerData } from "../types";
 
-export const updateTimer = (time: {min: number, sec: number}) => {
+export const setTimer = (time: TimerData) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch ({
-      type: ActionType.TIMER_UPDATE,
+      type: ActionType.SET_TIMER,
       payload: time
-    })
+    });
   }
 }

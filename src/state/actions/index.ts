@@ -1,9 +1,5 @@
 import { ActionType } from "../action-types";
-
-interface UpdateTimerDataAction {
-  type: ActionType.TIMER_UPDATE;
-  payload: {min: number, sec: number}
-}
+import { TimerData } from "../types";
 
 export enum TimerEvents {
   HALFWAY_WARNING = "first_warning",
@@ -25,6 +21,13 @@ export type TimerEvent =
   | TimerEvents.TIME_IS_UP
   | null;
 
+
+/* Actions */
+interface SetTimerDataAction {
+  type: ActionType.SET_TIMER;
+  payload: TimerData
+}
+
 interface TriggerTimerEventAction {
   type: ActionType.TRIGGER_TIMER_EVENT;
   payload: TimerEvent
@@ -44,7 +47,7 @@ interface ResumeTimer {
 }
 
 export type Action =
-  | UpdateTimerDataAction
+  | SetTimerDataAction
   | TriggerTimerEventAction
   | ChangeTimerSpeed
   | PauseTimer

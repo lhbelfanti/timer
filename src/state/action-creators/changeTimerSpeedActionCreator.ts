@@ -7,6 +7,6 @@ export const changeTimerSpeed = (multiplier: number) => {
     dispatch ({
       type: ActionType.CHANGE_TIMER_SPEED,
       payload: multiplier
-    })
+    });
   }
 }

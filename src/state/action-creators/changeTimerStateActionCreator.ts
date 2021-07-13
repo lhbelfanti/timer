@@ -6,7 +6,7 @@ export const pauseTimer = () => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch ({
       type: ActionType.PAUSE_TIMER
-    })
+    });
   }
 }
 
@@ -14,6 +14,6 @@ export const resumeTimer = () => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch ({
       type: ActionType.RESUME_TIMER
-    })
+    });
   }
 }
