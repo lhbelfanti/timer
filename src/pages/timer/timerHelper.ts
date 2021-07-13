@@ -1,8 +1,6 @@
 import { TimerData } from "../../state";
 
 export const countdown = (counter: TimerData) => {
-  console.log(`Before: ${JSON.stringify(counter)}`);
-
   if (counter.sec - 1 === -1) {
     counter.min -= 1;
     counter.sec = 59
@@ -10,7 +8,6 @@ export const countdown = (counter: TimerData) => {
     counter.sec -= 1
   }
 
-  console.log(`After: ${JSON.stringify(counter)}`);
   return counter;
 }
 
