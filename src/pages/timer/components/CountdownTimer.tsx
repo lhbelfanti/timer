@@ -81,6 +81,7 @@ const CountdownTimer = (props: CountdownTimerProps) => {
           triggerTimerEvent(null);
           clearTimerInterval();
           createNewTimer();
+          setTextStyle("");
           break;
         }
         case TimerEvents.RESUME:
