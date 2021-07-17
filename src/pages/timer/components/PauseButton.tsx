@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { TimerEvents } from "../../../state/actions";
-import { Button } from "@material-ui/core";
 import { Pause, PlayArrow } from "@material-ui/icons";
 import "../../../styles/pages/timer/sections/countdown-timer-section.css";
+import { styled } from "@material-ui/core/styles";
+import { compose, spacing, borders } from "@material-ui/system";
+import MuiButton from "@material-ui/core/Button";
 
 interface PauseButtonState {
   isPaused: boolean
 }
+
+const Button = styled(MuiButton)(compose(spacing, borders));
 
 const PauseButton = () => {
   const [state, setState] = useState<PauseButtonState>({ isPaused: true });
@@ -37,7 +41,8 @@ const PauseButton = () => {
       color="primary"
       aria-label="pause"
       onClick={onButtonClick}
-      className={"pause-button"}>
+      marginLeft={2}
+      borderRadius={100}>
     {!state.isPaused ? <Pause /> : <PlayArrow />}
     </Button>
   );

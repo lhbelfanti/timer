@@ -5,15 +5,15 @@ import "../../../styles/pages/timer/sections/countdown-timer-section.css";
 import FadeInText from "../components/FadeInText";
 
 interface CountdownTimerProps {
-  halfwayWarning: number,
-  colorWarning: number,
+  halfwayWarningPercentage: number,
+  colorWarningThreshold: number,
   halfwayWarningText: string,
   timesUpText: string,
-  blinkWarning: number,
+  blinkWarningThreshold: number,
 }
 
 const CountdownTimerSection = (props: CountdownTimerProps) => {
-  const { halfwayWarning, colorWarning, halfwayWarningText, timesUpText, blinkWarning } = props;
+  const { halfwayWarningPercentage, colorWarningThreshold, halfwayWarningText, timesUpText, blinkWarningThreshold } = props;
   return (
     <div className={"countdown-timer-section-main-container"}>
       <FadeInText
@@ -21,9 +21,9 @@ const CountdownTimerSection = (props: CountdownTimerProps) => {
         timesUpText={timesUpText}/>
       <div className={"countdown-timer-section-sub-container"}>
         <CountdownTimer
-          halfwayWarning={halfwayWarning}
-          colorWarning={colorWarning}
-          blinkWarning={blinkWarning}/>
+          halfwayWarningPercentage={halfwayWarningPercentage}
+          colorWarningThreshold={colorWarningThreshold}
+          blinkWarningThreshold={blinkWarningThreshold}/>
         <PauseButton/>
       </div>
     </div>

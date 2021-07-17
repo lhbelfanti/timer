@@ -14,14 +14,6 @@
   align-items: center;
 }
 
-.countdown-timer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-weight: 900 !important;
-}
-
 .countdown-timer-red {
   color: #f44336;
 }
@@ -35,9 +27,4 @@
   50% {
     opacity: 0;
   }
-}
-
-.pause-button {
-  margin-left: 20px !important;
-  border-radius: 100px !important;
 }

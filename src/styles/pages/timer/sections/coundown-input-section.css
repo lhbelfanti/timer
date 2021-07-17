@@ -1,13 +1,9 @@
 .countdown-input-section-main-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 90%;
-}
-
-.countdown-label {
-  margin: 0 20px;
 }
 
 .countdown-label span {
@@ -15,17 +11,13 @@
 }
 
 .countdown-input {
-  width: 130px;
+  width: 110px;
   margin: 0 20px;
 }
 
 .countdown-input input[type="text"] {
   font-size: 30px;
   text-align: center;
-}
-
-.countdown-button {
-  margin: 0 20px !important;
 }
 
 .countdown-button-label {

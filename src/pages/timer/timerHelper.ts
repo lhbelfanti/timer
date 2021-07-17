@@ -53,7 +53,7 @@ export const getSecondsFromMMSS = (value: string) => {
 
 export const toMMSS = (secs: number) => {
   const secNum = parseInt(secs.toString(), 10);
-  const minutes = formatVal(Math.floor(secNum / 60) % 60);
+  const minutes = formatVal(Math.floor(secNum / 60) % 100);
   const seconds = formatVal(secNum % 60);
   return `${minutes}:${seconds}`;
 };
@@ -62,24 +62,8 @@ export const formatVal = (val: number) => {
   return val < 10 ? `0${val}` : val;
 }
 
-export const limitTimerInput = (val: string, max: string) => {
-  if (val.length === 1 && val[0] > max[0]) {
-    val = "0" + val;
-  }
-
-  if (val.length === 2) {
-    if (Number(val) === 0) {
-      val = "00";
-    } else if (val > max) { // This can happen when user paste number
-      val = max;
-    }
-  }
-
-  return val;
-}
-
 export const timerLimit = (val: string) => {
-  let minutes = limitTimerInput(val.substring(0, 2), '59');
+  let minutes = val.substring(0, 2);
   let seconds = val.substring(2, 4);
 
   return minutes + (seconds.length ? ':' + seconds : '');

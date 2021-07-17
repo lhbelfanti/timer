@@ -17,11 +17,3 @@ body {
   align-items: center;
   margin: auto;
 }
-
-.sub-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 30px 0 !important;
-}

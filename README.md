@@ -42,16 +42,4 @@ See the following image to get a deeper insight of the setup.
 ## Configuration values
 
 All the configuration values are defined in a single [config.json](./src/pages/config.json). 
-The properties have a self-explanatory name, but they are also explained in the following table:
-
-| Property      | Description |
-| -----------   | ----------- |
-| countdownLabelText      | The text for the Countdown label at the top left of the timer page. |
-| startButtonText   | The text for the start button at the top right of the timer page.        |
-| halfwayWarningPercentage   | The percentage threshold where the first info panel appear. Valid values [0.0-1.0]. It's 0.5 by default, the half of the time entered. |
-| colorWarningStartingAtSecond   | The exact second where the timer turns red. It's 20 seconds by default.  |
-| blinkWarningStartingAtSecond   | The exact second where the timer starts blinking. It's 10 seconds by default. |
-| halfwayWarningInfoText   | The text for the halfway warning info panel. |
-| timesUpInfoText   | The text for the info panel that appears when the time reaches 00:00. |
-| multipliers   | An array of multipliers to speed up the timer. Each value of the array represents a button in the bottom part of the timer page and the speed by which the countdown timer will be multiplied. It has 3 values by default: 1, 1.5 and 2.0 |
-| defaultSelectedMultiplierIndex   | The default selected index of the multipliers array. It's 0 by default, the first one.|
+All the properties have a self-explanatory name.

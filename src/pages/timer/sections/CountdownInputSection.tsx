@@ -51,8 +51,7 @@ const CountdownInputSection = (props: CountdownInputSectionProps) => {
         variant="contained"
         color="primary"
         disabled={buttonDisabled}
-        onClick={onButtonClick}
-        className={"countdown-button"}>
+        onClick={onButtonClick}>
         <div className={"countdown-button-label"}>
           <AlarmIcon />
           {props.buttonText}

@@ -17,13 +17,13 @@ const initialState = {
 }
 
 interface CountdownTimerProps {
-  halfwayWarning: number,
-  colorWarning: number,
-  blinkWarning: number
+  halfwayWarningPercentage: number,
+  colorWarningThreshold: number,
+  blinkWarningThreshold: number
 }
 
-let cache = 0;
-let timerId: any = null;
+let cache: number = 0;
+let timerId: NodeJS.Timeout | null = null;
 
 const CountdownTimer = (props: CountdownTimerProps) => {
   const [state, setState] = useState<CountdownTimerState>(initialState);
@@ -41,7 +41,7 @@ const CountdownTimer = (props: CountdownTimerProps) => {
   }
 
   const createNewTimer = (fromReset: boolean = true) => {
-    const firstWarnInSecs = fromReset ? firstWarningToSeconds(data, props.halfwayWarning) : cache;
+    const firstWarnInSecs = fromReset ? firstWarningToSeconds(data, props.halfwayWarningPercentage) : cache;
     if (cache === 0) cache = firstWarnInSecs;
     setState({minutes: data.min, seconds: data.sec});
     setTimer(data);
@@ -63,9 +63,9 @@ const CountdownTimer = (props: CountdownTimerProps) => {
     const total = counter.sec + (counter.min * 60);
     if (total === firstWarningInSeconds) {
       triggerTimerEvent(TimerEvents.HALFWAY_WARNING);
-    } else if (total === props.colorWarning) {
+    } else if (total === props.colorWarningThreshold) {
       triggerTimerEvent(TimerEvents.COLOR_WARNING);
-    } else if (total === props.blinkWarning) {
+    } else if (total === props.blinkWarningThreshold) {
       triggerTimerEvent(TimerEvents.BLINK_WARNING);
     } else if (total === 0) {
       triggerTimerEvent(TimerEvents.TIME_IS_UP);
