@@ -1,11 +1,5 @@
 # Countdown Timer
 
-## Time spent in this project
-I've spent 12 hours doing this project:
-- I was around 4 hours configuring the project and making [Redux work as expected](#redux-setup).
-- Around 6 hours coding the logic.
-- The other 2 hours making it look pretty.
-
 ## Preview 
 ![Countdown Timer png preview](images/timer.png)
 
