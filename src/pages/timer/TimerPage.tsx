@@ -1,29 +1,40 @@
 import React from "react";
 import CountdownInputSection from "./sections/CountdownInputSection";
 import MultipliersSection from "./sections/MultipliersSection";
-import "../../styles/pages/timer/timer-page.css"
-import { Box, Paper } from "@material-ui/core";
 import CountdownTimerSection from "./sections/CountdownTimerSection";
 import * as data from "../config.json"
-import { styled } from "@material-ui/core/styles";
-import { flexbox, compose, spacing } from "@material-ui/system";
+import { Container } from "../../types";
+import Paper from "@material-ui/core/Paper";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
-const SubContainer = styled(Box)(compose(spacing, flexbox));
+const useStyles = makeStyles({
+  paper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "auto",
+  },
+});
 
 const TimerPage = () => {
-  const { countdownInputSection, countdownTimerSection, multiplierSection } = data.timer;
+  const classes = useStyles();
+  const {countdownInputSection, countdownTimerSection, multiplierSection} = data.timer;
+
   return (
-    <Box className={"box"}>
+    <Container
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      minHeight={"90vh"}>
       <Paper
         elevation={20}
-        className={"main-container"}>
-        <SubContainer
+        className={classes.paper}>
+        <Container
           m={3}
           display={"flex"}
-          justifyContent={"center"}
-          alignItems={"center"}
           flexDirection={"column"}
-          className={"sub-container"}>
+          justifyContent={"center"}
+          alignItems={"center"}>
           <CountdownInputSection
             label={countdownInputSection.countdownLabelText}
             buttonText={countdownInputSection.startButtonText}/>
@@ -36,9 +47,9 @@ const TimerPage = () => {
           <MultipliersSection
             multipliers={multiplierSection.multipliers}
             defaultIndex={multiplierSection.defaultSelectedMultiplierIndex}/>
-        </SubContainer>
+        </Container>
       </Paper>
-    </Box>
+    </Container>
   );
 }
 

@@ -4,7 +4,7 @@ import { Dispatch } from "react";
 
 export const changeTimerSpeed = (multiplier: number) => {
   return async (dispatch: Dispatch<Action>) => {
-    dispatch ({
+    dispatch({
       type: ActionType.CHANGE_TIMER_SPEED,
       payload: multiplier
     });

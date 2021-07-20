@@ -12,7 +12,11 @@
       "timesUpInfoText": "Time's up!"
     },
     "multiplierSection": {
-      "multipliers": [1, 1.5, 2],
+      "multipliers": [
+        1,
+        1.5,
+        2
+      ],
       "defaultSelectedMultiplierIndex": 0
     }
   }

@@ -1,8 +1,8 @@
 import CountdownTimer from "../components/CountdownTimer";
 import PauseButton from "../components/PauseButton";
 import React from "react";
-import "../../../styles/pages/timer/sections/countdown-timer-section.css";
 import FadeInText from "../components/FadeInText";
+import { Container } from "../../../types";
 
 interface CountdownTimerProps {
   halfwayWarningPercentage: number,
@@ -13,20 +13,36 @@ interface CountdownTimerProps {
 }
 
 const CountdownTimerSection = (props: CountdownTimerProps) => {
-  const { halfwayWarningPercentage, colorWarningThreshold, halfwayWarningText, timesUpText, blinkWarningThreshold } = props;
+  const {
+    halfwayWarningPercentage,
+    colorWarningThreshold,
+    halfwayWarningText,
+    timesUpText,
+    blinkWarningThreshold
+  } = props;
   return (
-    <div className={"countdown-timer-section-main-container"}>
+    <Container
+      display={"flex"}
+      flexDirection={"column"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      width={"90%"}
+      pt={3} pb={3}>
       <FadeInText
         halfwayWarningText={halfwayWarningText}
         timesUpText={timesUpText}/>
-      <div className={"countdown-timer-section-sub-container"}>
+      <Container
+        display={"flex"}
+        flexDirection={"row"}
+        justifyContent={"center"}
+        alignItems={"center"}>
         <CountdownTimer
           halfwayWarningPercentage={halfwayWarningPercentage}
           colorWarningThreshold={colorWarningThreshold}
           blinkWarningThreshold={blinkWarningThreshold}/>
         <PauseButton/>
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 }
 

@@ -5,7 +5,7 @@ import { TimerData } from "../types";
 
 export const setTimer = (time: TimerData) => {
   return async (dispatch: Dispatch<Action>) => {
-    dispatch ({
+    dispatch({
       type: ActionType.SET_TIMER,
       payload: time
     });

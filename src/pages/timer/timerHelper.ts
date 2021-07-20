@@ -13,7 +13,7 @@ export const countdown = (counter: TimerData) => {
 
 export const stringToMinSec = (time: string) => {
   let data = time.split(":");
-  return { min: Number(data[0]), sec: Number(data[1]) }
+  return {min: Number(data[0]), sec: Number(data[1])}
 }
 
 export const firstWarningToSeconds = (counter: TimerData, firstWarning: number) => {

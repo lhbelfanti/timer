@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Collapse, IconButton } from "@material-ui/core";
+import Collapse from "@material-ui/core/Collapse";
+import IconButton from "@material-ui/core/IconButton";
 import Alert from '@material-ui/lab/Alert';
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { TimerEvents } from "../../../state/actions";
@@ -13,7 +14,7 @@ interface FadeInTextProps {
 const FadeInText = (props: FadeInTextProps) => {
   const [isEnable, setIsEnable] = useState(false);
   const [text, setText] = useState("");
-  const { event } = useTypedSelector((state) => state.timer);
+  const {event} = useTypedSelector((state) => state.timer);
 
   useEffect(() => {
     if (event === TimerEvents.RESET) {
@@ -35,7 +36,9 @@ const FadeInText = (props: FadeInTextProps) => {
             aria-label="close"
             color="inherit"
             size="small"
-            onClick={() => { setIsEnable(false)}}>
+            onClick={() => {
+              setIsEnable(false)
+            }}>
             <Close fontSize="inherit"/>
           </IconButton>
         }

@@ -4,7 +4,7 @@ import { Dispatch } from "react";
 
 export const pauseTimer = () => {
   return async (dispatch: Dispatch<Action>) => {
-    dispatch ({
+    dispatch({
       type: ActionType.PAUSE_TIMER
     });
   }
@@ -12,7 +12,7 @@ export const pauseTimer = () => {
 
 export const resumeTimer = () => {
   return async (dispatch: Dispatch<Action>) => {
-    dispatch ({
+    dispatch({
       type: ActionType.RESUME_TIMER
     });
   }

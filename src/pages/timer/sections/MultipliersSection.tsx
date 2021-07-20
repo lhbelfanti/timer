@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TimeMultiplier from "../components/TimeMultiplier";
-import "../../../styles/pages/timer/sections/multiplier-section.css";
+import { Container } from "../../../types";
 
 export interface MultipliersContainerProps {
   multipliers: Array<number>,
@@ -25,16 +25,23 @@ const MultipliersSection = (props: MultipliersContainerProps) => {
   }
 
   return (
-    <div className={"multiplier-section-main-container"}>
+    <Container
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      width={"90%"}
+      mr={5} ml={5}>
       {multipliers.map((e, i) => (
         <TimeMultiplier
           key={i}
           multiplier={e}
-          onMultiplierClicked={() => { setClickedId(i); }}
-          variant={ defineVariant(i) }
+          onMultiplierClicked={() => {
+            setClickedId(i);
+          }}
+          variant={defineVariant(i)}
         />
       ))}
-    </div>
+    </Container>
   );
 }
 

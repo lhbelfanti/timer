@@ -1,1 +1,1 @@
-export type TimerData = {min: number, sec: number};
+export type TimerData = { min: number, sec: number };

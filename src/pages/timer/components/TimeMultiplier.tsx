@@ -1,10 +1,7 @@
 import React from "react";
 import { useActions } from "../../../hooks/useActions";
 import { TimerEvents } from "../../../state/actions";
-import "../../../styles/pages/timer/sections/multiplier-section.css";
-import { styled } from "@material-ui/core/styles";
-import MuiButton from "@material-ui/core/Button";
-import { spacing } from "@material-ui/system";
+import { Button } from "../../../types"
 
 interface TimeMultiplierProps {
   multiplier: number,
@@ -12,11 +9,9 @@ interface TimeMultiplierProps {
   variant: "outlined" | "contained"
 }
 
-const Button = styled(MuiButton)(spacing);
-
 const TimeMultiplier = (props: TimeMultiplierProps) => {
   const buttonText = `${props.multiplier.toString()}X`;
-  const { changeTimerSpeed, triggerTimerEvent } = useActions();
+  const {changeTimerSpeed, triggerTimerEvent} = useActions();
 
 
   const onClick = () => {
@@ -31,9 +26,8 @@ const TimeMultiplier = (props: TimeMultiplierProps) => {
         variant={props.variant}
         color="primary"
         onClick={onClick}
-        mr={2}
-        ml={2}>
-        { buttonText }
+        mr={2} ml={2}>
+        {buttonText}
       </Button>
     </div>
   );
