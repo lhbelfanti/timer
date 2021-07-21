@@ -3,36 +3,48 @@ import { TimerData } from "../../state";
 export const countdown = (counter: TimerData) => {
   if (counter.sec - 1 === -1) {
     counter.min -= 1;
-    counter.sec = 59
+    counter.sec = 59;
   } else {
-    counter.sec -= 1
+    counter.sec -= 1;
   }
 
   return counter;
-}
+};
 
 export const stringToMinSec = (time: string) => {
-  let data = time.split(":");
-  return {min: Number(data[0]), sec: Number(data[1])}
-}
+  const data = time.split(":");
 
-export const firstWarningToSeconds = (counter: TimerData, firstWarning: number) => {
-  const {min, sec} = counter;
+  return { min: Number(data[0]), sec: Number(data[1]) };
+};
+
+export const firstWarningToSeconds = (
+  counter: TimerData,
+  firstWarning: number
+) => {
+  const { min, sec } = counter;
 
   let percentage = firstWarning;
-  if (percentage > 1 || percentage < 0)
+  if (percentage > 1 || percentage < 0) {
     percentage = 0.5;
-  const total = sec + (min * 60)
+  }
+  const total = sec + min * 60;
+
   return Math.round(total * percentage);
-}
+};
 
 export const speedToMilliseconds = (speed: number) => {
   return (1 / speed) * 1000;
-}
+};
 
 export const formatText = (minutes: number, seconds: number) => {
-  return (minutes < 10 ? "0" : "") + minutes.toString() + ":" + (seconds < 10 ? "0" : "") + seconds.toString();
-}
+  return (
+    (minutes < 10 ? "0" : "") +
+    minutes.toString() +
+    ":" +
+    (seconds < 10 ? "0" : "") +
+    seconds.toString()
+  );
+};
 
 export const getSecondsFromMMSS = (value: string) => {
   const [str1, str2] = value.split(":");
@@ -55,16 +67,17 @@ export const toMMSS = (secs: number) => {
   const secNum = parseInt(secs.toString(), 10);
   const minutes = formatVal(Math.floor(secNum / 60) % 100);
   const seconds = formatVal(secNum % 60);
+
   return `${minutes}:${seconds}`;
 };
 
 export const formatVal = (val: number) => {
   return val < 10 ? `0${val}` : val;
-}
+};
 
 export const timerLimit = (val: string) => {
-  let minutes = val.substring(0, 2);
-  let seconds = val.substring(2, 4);
+  const minutes = val.substring(0, 2);
+  const seconds = val.substring(2, 4);
 
-  return minutes + (seconds.length ? ':' + seconds : '');
-}
+  return minutes + (seconds.length ? ":" + seconds : "");
+};

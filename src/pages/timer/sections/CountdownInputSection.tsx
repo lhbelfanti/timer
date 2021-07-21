@@ -1,11 +1,11 @@
+import Button from "@material-ui/core/Button";
+import AlarmIcon from "@material-ui/icons/Alarm";
 import React, { useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { TimerEvents } from "../../../state/actions";
-import { stringToMinSec } from "../timerHelper";
-import Button from "@material-ui/core/Button";
-import CountdownInput from "../components/CountdownInput";
-import AlarmIcon from '@material-ui/icons/Alarm';
 import { ChipLabel, Container } from "../../../types";
+import CountdownInput from "../components/CountdownInput";
+import { stringToMinSec } from "../timerHelper";
 
 interface CountdownInputSectionProps {
   label: string

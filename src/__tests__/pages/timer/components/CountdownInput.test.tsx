@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render, screen } from "@testing-library/react";
-import CountdownInput from "../../../../pages/timer/components/CountdownInput";
 import userEvent from "@testing-library/user-event";
+import CountdownInput from "../../../../pages/timer/components/CountdownInput";
 
 describe("CountdownInput Component Tests Suite", () => {
 
@@ -46,7 +46,7 @@ describe("CountdownInput Component Tests Suite", () => {
     const input = screen.getByRole("textbox");
     userEvent.clear(input);
     called += 1;
-    let newValue = "Letters"
+    const newValue = "Letters"
     userEvent.type(input, newValue);
     called += newValue.length;
     expect(onChangeMock).toHaveBeenCalledTimes(called);
@@ -74,7 +74,6 @@ describe("CountdownInput Component Tests Suite", () => {
     called += newValue.length;
     expect(onChangeMock).toHaveBeenCalledTimes(called);
     expect(input).toHaveValue("5");
-
 
     userEvent.clear(input);
     called += 1;

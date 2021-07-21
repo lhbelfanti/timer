@@ -1,13 +1,22 @@
 language: node_js
-install:
-  - yarn install
-  - yarn install codecov -g
-env:
-  - CODECOV_TOKEN=$CODECOV_TOKEN
-scripts:
-  - yarn test
-  - codecov -f coverage/*.json
-after_success:
-  - codecov
+node_js:
+  - "stable"
+cache:
+  directories:
+    - node_modules
+script:
+  - npm test
+  - npm run build
+
+#install:
+#  - npm install
+#  - npm install codecov -g
+#env:
+#  - CODECOV_TOKEN=$CODECOV_TOKEN
+#scripts:
+#  - CI=true npm run test:unit --reporters=jest-junit --coverage --no-cache
+#  - codecov -f coverage/*.json
+#after_success:
+#  - codecov
 
 

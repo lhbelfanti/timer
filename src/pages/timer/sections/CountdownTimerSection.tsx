@@ -1,8 +1,8 @@
-import CountdownTimer from "../components/CountdownTimer";
-import PauseButton from "../components/PauseButton";
 import React from "react";
-import FadeInText from "../components/FadeInText";
 import { Container } from "../../../types";
+import CountdownTimer from "../components/CountdownTimer";
+import FadeInText from "../components/FadeInText";
+import PauseButton from "../components/PauseButton";
 
 interface CountdownTimerProps {
   halfwayWarningPercentage: number,
@@ -20,6 +20,7 @@ const CountdownTimerSection = (props: CountdownTimerProps) => {
     timesUpText,
     blinkWarningThreshold
   } = props;
+
   return (
     <Container
       display={"flex"}

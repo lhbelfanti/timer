@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
-import Alert from '@material-ui/lab/Alert';
+import { Close } from "@material-ui/icons";
+import Alert from "@material-ui/lab/Alert";
+import React, { useEffect, useState } from "react";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { TimerEvents } from "../../../state/actions";
-import { Close } from "@material-ui/icons";
 
 interface FadeInTextProps {
   halfwayWarningText: string,

@@ -1,6 +1,6 @@
+import { Dispatch } from "react";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
-import { Dispatch } from "react";
 import { TimerData } from "../types";
 
 export const setTimer = (time: TimerData) => {
@@ -9,5 +9,5 @@ export const setTimer = (time: TimerData) => {
       type: ActionType.SET_TIMER,
       payload: time
     });
-  }
-}
+  };
+};

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import TimeMultiplier from "../components/TimeMultiplier";
 import { Container } from "../../../types";
+import TimeMultiplier from "../components/TimeMultiplier";
 
 export interface MultipliersContainerProps {
-  multipliers: Array<number>,
+  multipliers: number[],
   defaultIndex: number
 }
 
@@ -18,6 +18,7 @@ const MultipliersSection = (props: MultipliersContainerProps) => {
   const defineVariant = (i: number) => {
     if (clickedId === -1 && defaultIndex === i) {
       setClickedId(defaultIndex);
+
       return buttonClicked;
     }
 

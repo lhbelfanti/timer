@@ -1,6 +1,6 @@
+import { Dispatch } from "react";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
-import { Dispatch } from "react";
 
 export const changeTimerSpeed = (multiplier: number) => {
   return async (dispatch: Dispatch<Action>) => {
@@ -8,5 +8,5 @@ export const changeTimerSpeed = (multiplier: number) => {
       type: ActionType.CHANGE_TIMER_SPEED,
       payload: multiplier
     });
-  }
-}
+  };
+};

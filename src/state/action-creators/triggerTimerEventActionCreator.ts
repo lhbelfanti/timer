@@ -1,6 +1,6 @@
+import { Dispatch } from "react";
 import { ActionType } from "../action-types";
 import { Action, TimerEvent } from "../actions";
-import { Dispatch } from "react";
 
 export const triggerTimerEvent = (event: TimerEvent) => {
   return async (dispatch: Dispatch<Action>) => {
@@ -8,5 +8,5 @@ export const triggerTimerEvent = (event: TimerEvent) => {
       type: ActionType.TRIGGER_TIMER_EVENT,
       payload: event
     });
-  }
-}
+  };
+};

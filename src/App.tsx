@@ -1,9 +1,8 @@
 import React, { Component, Suspense } from "react";
+import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import TimerPage from "./pages/timer/TimerPage";
-import { Provider } from "react-redux";
 import { store } from "./state";
-
 
 class App extends Component {
 

@@ -1,8 +1,8 @@
+import { Pause, PlayArrow } from "@material-ui/icons/";
 import React, { useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { TimerEvents } from "../../../state/actions";
-import { Pause, PlayArrow } from "@material-ui/icons/";
 import { Button } from "../../../types"
 
 interface PauseButtonState {
@@ -11,7 +11,7 @@ interface PauseButtonState {
 
 const PauseButton = () => {
   const [state, setState] = useState<PauseButtonState>({isPaused: true});
-  const {paused} = useTypedSelector((state) => state.timer);
+  const {paused} = useTypedSelector((rootState) => rootState.timer);
   const {pauseTimer, resumeTimer, triggerTimerEvent} = useActions();
 
   const onButtonClick = () => {
@@ -26,8 +26,9 @@ const PauseButton = () => {
   }
 
   useEffect(() => {
-    if (paused !== state.isPaused)
+    if (paused !== state.isPaused) {
       setState({isPaused: paused});
+    }
   }, [paused, state.isPaused]);
 
   return (

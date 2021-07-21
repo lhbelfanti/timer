@@ -1,11 +1,11 @@
-import React from "react";
-import CountdownInputSection from "./sections/CountdownInputSection";
-import MultipliersSection from "./sections/MultipliersSection";
-import CountdownTimerSection from "./sections/CountdownTimerSection";
-import * as data from "../config.json"
-import { Container } from "../../types";
 import Paper from "@material-ui/core/Paper";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import React from "react";
+import { Container } from "../../types";
+import * as data from "../config.json"
+import CountdownInputSection from "./sections/CountdownInputSection";
+import CountdownTimerSection from "./sections/CountdownTimerSection";
+import MultipliersSection from "./sections/MultipliersSection";
 
 const useStyles = makeStyles({
   paper: {

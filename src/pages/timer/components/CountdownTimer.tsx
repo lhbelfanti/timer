@@ -1,10 +1,10 @@
-import { useActions } from "../../../hooks/useActions";
-import { TimerEvents } from "../../../state/actions";
-import { useEffect, useState } from "react";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { countdown, firstWarningToSeconds, formatText, speedToMilliseconds } from "../timerHelper";
 import { Typography } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import { useEffect, useState } from "react";
+import { useActions } from "../../../hooks/useActions";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { TimerEvents } from "../../../state/actions";
+import { countdown, firstWarningToSeconds, formatText, speedToMilliseconds } from "../timerHelper";
 
 interface CountdownTimerState {
   minutes: number,
@@ -44,21 +44,22 @@ const CountdownTimer = (props: CountdownTimerProps) => {
   const classes = useStyles();
   const [state, setState] = useState<CountdownTimerState>(initialState);
   const [textStyle, setTextStyle] = useState("");
-  const {data, event, paused, speed} = useTypedSelector((state) => state.timer);
+  const {data, event, paused, speed} = useTypedSelector((rootState) => rootState.timer);
   const {triggerTimerEvent, setTimer, pauseTimer} = useActions();
 
   const clearTimerInterval = (shouldPauseTimer: boolean = true) => {
     if (timerId !== null) {
       clearInterval(timerId);
-      if (shouldPauseTimer)
+      if (shouldPauseTimer) {
         pauseTimer();
+      }
     }
     timerId = null;
   }
 
   const createNewTimer = (fromReset: boolean = true) => {
     const firstWarnInSecs = fromReset ? firstWarningToSeconds(data, props.halfwayWarningPercentage) : cache;
-    if (cache === 0) cache = firstWarnInSecs;
+    if (cache === 0) { cache = firstWarnInSecs; }
     setState({minutes: data.min, seconds: data.sec});
     setTimer(data);
     timerId = setInterval(() => {
@@ -69,6 +70,7 @@ const CountdownTimer = (props: CountdownTimerProps) => {
   const onTimerCountdown = (firstWarningInSeconds: number) => {
     if (data.min === 0 && data.sec === 0) {
       clearTimerInterval();
+
       return;
     }
 

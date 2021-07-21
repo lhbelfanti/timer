@@ -1,9 +1,9 @@
+import "@fontsource/roboto";
+import { CssBaseline } from "@material-ui/core";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import '@fontsource/roboto';
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import { CssBaseline } from "@material-ui/core";
 
 const theme = createTheme({
   palette: {

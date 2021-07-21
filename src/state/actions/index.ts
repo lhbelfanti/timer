@@ -8,7 +8,7 @@ export enum TimerEvents {
   RESET = "reset",
   RESUME = "resume",
   SPEED_CHANGED = "speed",
-  TIME_IS_UP = "time_is_up",
+  TIME_IS_UP = "time_is_up"
 }
 
 export type TimerEvent =
@@ -21,21 +21,20 @@ export type TimerEvent =
   | TimerEvents.TIME_IS_UP
   | null;
 
-
 /* Actions */
 interface SetTimerDataAction {
   type: ActionType.SET_TIMER;
-  payload: TimerData
+  payload: TimerData;
 }
 
 interface TriggerTimerEventAction {
   type: ActionType.TRIGGER_TIMER_EVENT;
-  payload: TimerEvent
+  payload: TimerEvent;
 }
 
 interface ChangeTimerSpeed {
   type: ActionType.CHANGE_TIMER_SPEED;
-  payload: number
+  payload: number;
 }
 
 interface PauseTimer {
@@ -51,4 +50,4 @@ export type Action =
   | TriggerTimerEventAction
   | ChangeTimerSpeed
   | PauseTimer
-  | ResumeTimer
+  | ResumeTimer;

@@ -13,7 +13,6 @@ const TimeMultiplier = (props: TimeMultiplierProps) => {
   const buttonText = `${props.multiplier.toString()}X`;
   const {changeTimerSpeed, triggerTimerEvent} = useActions();
 
-
   const onClick = () => {
     changeTimerSpeed(props.multiplier);
     triggerTimerEvent(TimerEvents.SPEED_CHANGED);
