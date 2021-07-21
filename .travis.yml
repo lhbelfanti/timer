@@ -1,0 +1,13 @@
+language: node_js
+install:
+  - yarn install
+  - yarn install codecov -g
+env:
+  - CODECOV_TOKEN=$CODECOV_TOKEN
+scripts:
+  - yarn test
+  - codecov -f coverage/*.json
+after_success:
+  - codecov
+
+
