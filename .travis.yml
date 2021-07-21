@@ -4,19 +4,16 @@ node_js:
 cache:
   directories:
     - node_modules
+install:
+  - npm install
+  - npm install codecov -g
+env:
+  - CODECOV_TOKEN=$CODECOV_TOKEN
 script:
-  - npm test
-  - npm run build
+  - CI=true npm run test:unit --reporters=jest-junit --coverage --no-cache
+  - codecov -f coverage/*.json
+after_success:
+  - codecov
 
-#install:
-#  - npm install
-#  - npm install codecov -g
-#env:
-#  - CODECOV_TOKEN=$CODECOV_TOKEN
-#scripts:
-#  - CI=true npm run test:unit --reporters=jest-junit --coverage --no-cache
-#  - codecov -f coverage/*.json
-#after_success:
-#  - codecov
 
 
