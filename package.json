@@ -29,7 +29,7 @@
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:tslint": "tslint --fix --project .",
     "test": "CI=true run-s test:*",
-    "test:unit": "react-scripts test",
+    "test:unit": "react-scripts test --coverage",
     "test:lint": "tslint --project . && prettier \"src/**/*.ts\" --list-different",
     "eject": "react-scripts eject"
   },

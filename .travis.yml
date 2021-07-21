@@ -10,10 +10,8 @@ install:
 env:
   - CODECOV_TOKEN=$CODECOV_TOKEN
 script:
-  - CI=true npm run test:unit --reporters=jest-junit --coverage --no-cache
+  - CI=true npm run test:unit --reporters=jest-junit
   - codecov -f coverage/*.json
-after_success:
-  - codecov
 
 
 
