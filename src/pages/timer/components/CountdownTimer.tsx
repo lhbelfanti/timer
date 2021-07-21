@@ -1,6 +1,6 @@
 import { Typography } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { TimerEvents } from "../../../state/actions";
@@ -47,7 +47,7 @@ const CountdownTimer = (props: CountdownTimerProps) => {
   const {data, event, paused, speed} = useTypedSelector((rootState) => rootState.timer);
   const {triggerTimerEvent, setTimer, pauseTimer} = useActions();
 
-  const clearTimerInterval = (shouldPauseTimer: boolean = true) => {
+  const clearTimerInterval = useCallback((shouldPauseTimer: boolean = true) => {
     if (timerId !== null) {
       clearInterval(timerId);
       if (shouldPauseTimer) {
@@ -55,19 +55,9 @@ const CountdownTimer = (props: CountdownTimerProps) => {
       }
     }
     timerId = null;
-  }
+  }, [pauseTimer]);
 
-  const createNewTimer = (fromReset: boolean = true) => {
-    const firstWarnInSecs = fromReset ? firstWarningToSeconds(data, props.halfwayWarningPercentage) : cache;
-    if (cache === 0) { cache = firstWarnInSecs; }
-    setState({minutes: data.min, seconds: data.sec});
-    setTimer(data);
-    timerId = setInterval(() => {
-      onTimerCountdown(firstWarnInSecs);
-    }, speedToMilliseconds(speed));
-  }
-
-  const onTimerCountdown = (firstWarningInSeconds: number) => {
+  const onTimerCountdown = useCallback((firstWarningInSeconds: number) => {
     if (data.min === 0 && data.sec === 0) {
       clearTimerInterval();
 
@@ -90,7 +80,17 @@ const CountdownTimer = (props: CountdownTimerProps) => {
       pauseTimer();
       cache = 0;
     }
-  }
+  }, [clearTimerInterval, data, pauseTimer, props.blinkWarningThreshold, props.colorWarningThreshold, setTimer, triggerTimerEvent]);
+
+  const createNewTimer = useCallback((fromReset: boolean = true) => {
+    const firstWarnInSecs = fromReset ? firstWarningToSeconds(data, props.halfwayWarningPercentage) : cache;
+    if (cache === 0) { cache = firstWarnInSecs; }
+    setState({minutes: data.min, seconds: data.sec});
+    setTimer(data);
+    timerId = setInterval(() => {
+      onTimerCountdown(firstWarnInSecs);
+    }, speedToMilliseconds(speed));
+  }, [data, onTimerCountdown, props.halfwayWarningPercentage, setTimer, speed]);
 
   useEffect(() => {
     if (!paused) {
