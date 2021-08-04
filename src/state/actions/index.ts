@@ -22,6 +22,10 @@ export type TimerEvent =
   | null;
 
 /* Actions */
+interface Default {
+  type: ActionType.DEFAULT;
+}
+
 interface SetTimerDataAction {
   type: ActionType.SET_TIMER;
   payload: TimerData;
@@ -46,6 +50,7 @@ interface ResumeTimer {
 }
 
 export type Action =
+  | Default
   | SetTimerDataAction
   | TriggerTimerEventAction
   | ChangeTimerSpeed
