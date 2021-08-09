@@ -1,9 +1,8 @@
-import reducer from "../../../state/reducers/timerReducer";
 import { ActionType } from "../../../state/action-types";
 import { TimerEvents } from "../../../state/actions";
+import reducer from "../../../state/reducers/timerReducer";
 
 describe("Timer reducer Tests Suite", () => {
-
   const initialState = {
     event: null,
     speed: 1,
@@ -52,27 +51,40 @@ describe("Timer reducer Tests Suite", () => {
   });
 
   test("Handles timer change state", () => {
-    const currentState = reducer(initialState, { type: ActionType.SET_TIMER, payload: { min: 2, sec: 8 } });
+    const currentState = reducer(initialState, {
+      type: ActionType.SET_TIMER,
+      payload: { min: 2, sec: 8 }
+    });
     expect(currentState).toEqual(setTimerState);
   });
 
   test("Handles timer event state", () => {
-    const currentState = reducer(initialState, { type: ActionType.TRIGGER_TIMER_EVENT, payload: TimerEvents.COLOR_WARNING });
+    const currentState = reducer(initialState, {
+      type: ActionType.TRIGGER_TIMER_EVENT,
+      payload: TimerEvents.COLOR_WARNING
+    });
     expect(currentState).toEqual(timerEventState);
   });
 
   test("Handles timer speed state", () => {
-    const currentState = reducer(initialState, { type: ActionType.CHANGE_TIMER_SPEED, payload: 1.5 });
+    const currentState = reducer(initialState, {
+      type: ActionType.CHANGE_TIMER_SPEED,
+      payload: 1.5
+    });
     expect(currentState).toEqual(timerSpeedState);
   });
 
   test("Handles pause timer state", () => {
-    const currentState = reducer(initialState, { type: ActionType.PAUSE_TIMER });
+    const currentState = reducer(initialState, {
+      type: ActionType.PAUSE_TIMER
+    });
     expect(currentState).toEqual(pauseTimerState);
   });
 
   test("Handles resume timer state", () => {
-    const currentState = reducer(initialState, { type: ActionType.RESUME_TIMER });
+    const currentState = reducer(initialState, {
+      type: ActionType.RESUME_TIMER
+    });
     expect(currentState).toEqual(resumeTimerState);
   });
 });

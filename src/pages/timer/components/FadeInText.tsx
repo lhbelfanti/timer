@@ -29,8 +29,11 @@ const FadeInText = (props: FadeInTextProps) => {
   }, [event, props.halfwayWarningText, props.timesUpText]);
 
   return (
-    <Collapse in={isEnable}>
+    <Collapse
+      in={isEnable}
+      data-testid={"collapse"}>
       <Alert
+        data-testid={"alert"}
         action={
           <IconButton
             aria-label="close"

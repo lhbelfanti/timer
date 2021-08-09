@@ -2,7 +2,7 @@ import { ActionType } from "../action-types";
 import { Action } from "../actions";
 import { TimerData } from "../types";
 
-interface TimerState {
+export interface TimerState {
   event: string | null;
   speed: number;
   paused: boolean;
