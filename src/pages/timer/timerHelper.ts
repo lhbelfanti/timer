@@ -1,5 +1,9 @@
 import { TimerData } from "../../state";
 
+export const getSeconds = (counter: TimerData) => {
+  return counter.sec + counter.min * 60;
+};
+
 export const countdown = (counter: TimerData) => {
   if (counter.sec - 1 === -1) {
     counter.min -= 1;

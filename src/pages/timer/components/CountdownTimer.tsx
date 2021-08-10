@@ -4,17 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { TimerEvents } from "../../../state/actions";
-import { countdown, firstWarningToSeconds, formatText, speedToMilliseconds } from "../timerHelper";
-
-interface CountdownTimerState {
-  minutes: number,
-  seconds: number
-}
-
-const initialState = {
-  minutes: 0,
-  seconds: 0
-}
+import { countdown, firstWarningToSeconds, formatText, getSeconds, speedToMilliseconds } from "../timerHelper";
 
 interface CountdownTimerProps {
   halfwayWarningPercentage: number,
@@ -42,7 +32,6 @@ let timerId: NodeJS.Timeout | null = null;
 
 const CountdownTimer = (props: CountdownTimerProps) => {
   const classes = useStyles();
-  const [state, setState] = useState<CountdownTimerState>(initialState);
   const [textStyle, setTextStyle] = useState("");
   const {data, event, paused, speed} = useTypedSelector((rootState) => rootState.timer);
   const {triggerTimerEvent, setTimer, pauseTimer} = useActions();
@@ -65,10 +54,9 @@ const CountdownTimer = (props: CountdownTimerProps) => {
     }
 
     const counter = countdown(data);
-    setState({minutes: counter.min, seconds: counter.sec});
     setTimer(counter);
 
-    const total = counter.sec + (counter.min * 60);
+    const total = getSeconds(counter);
     if (total === firstWarningInSeconds) {
       triggerTimerEvent(TimerEvents.HALFWAY_WARNING);
     } else if (total === props.colorWarningThreshold) {
@@ -85,7 +73,6 @@ const CountdownTimer = (props: CountdownTimerProps) => {
   const createNewTimer = useCallback((fromReset: boolean = true) => {
     const firstWarnInSecs = fromReset ? firstWarningToSeconds(data, props.halfwayWarningPercentage) : cache;
     if (cache === 0) { cache = firstWarnInSecs; }
-    setState({minutes: data.min, seconds: data.sec});
     setTimer(data);
     timerId = setInterval(() => {
       onTimerCountdown(firstWarnInSecs);
@@ -133,13 +120,13 @@ const CountdownTimer = (props: CountdownTimerProps) => {
     } else {
       clearTimerInterval();
     }
-  }, [clearTimerInterval, event, createNewTimer, paused, state, triggerTimerEvent, classes.countdownInputRed, classes.countdownTimerBlink]);
+  }, [clearTimerInterval, event, createNewTimer, paused, triggerTimerEvent, classes.countdownInputRed, classes.countdownTimerBlink]);
 
   return (
     <Typography
       variant={"h1"}
       className={textStyle}>
-      {formatText(state.minutes, state.seconds)}
+      {formatText(data.min, data.sec)}
     </Typography>
   )
 }
