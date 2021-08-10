@@ -39,7 +39,9 @@ const PauseButton = () => {
       onClick={onButtonClick}
       marginLeft={2}
       borderRadius={100}>
-      {!state.isPaused ? <Pause/> : <PlayArrow/>}
+      {!state.isPaused ?
+        <Pause data-testid={"pause-svg"}/> :
+        <PlayArrow data-testid={"play-svg"}/>}
     </Button>
   );
 }
