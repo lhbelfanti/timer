@@ -23,11 +23,12 @@ describe("PauseButton Component Tests Suite", () => {
   const actionsAfterClickWhenNotPaused = [{"type": ActionType.PAUSE_TIMER}];
 
   /* Tests */
-  const renderComponent = (isPaused: boolean, store = mockStore(initialState)) => {
+  const renderComponent = (isPaused: boolean) => {
     jest.spyOn(typedSelectorHook, "useTypedSelector").mockImplementation(() => {
       return {...pauseState, paused: isPaused}
     });
 
+    const store = mockStore(initialState);
     render(
       <Provider store={store}>
         <PauseButton/>

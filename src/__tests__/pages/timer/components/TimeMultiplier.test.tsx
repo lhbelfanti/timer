@@ -21,7 +21,8 @@ describe("TimeMultiplier Component Tests Suite", () => {
   ];
 
   /* Tests */
-  const renderComponent = (multiplier:number, variant: "outlined" | "contained", store = mockStore(initialState)) => {
+  const renderComponent = (multiplier:number, variant: "outlined" | "contained") => {
+    const store = mockStore(initialState);
     render(
       <Provider store={store}>
         <TimeMultiplier multiplier={multiplier} onMultiplierClicked={onClickMock} variant={variant}/>
