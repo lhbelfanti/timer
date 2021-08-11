@@ -20,15 +20,13 @@ const TimeMultiplier = (props: TimeMultiplierProps) => {
   }
 
   return (
-    <div>
-      <Button
-        variant={props.variant}
-        color="primary"
-        onClick={onClick}
-        mr={2} ml={2}>
-        {buttonText}
-      </Button>
-    </div>
+    <Button
+      variant={props.variant}
+      color="primary"
+      onClick={onClick}
+      mr={2} ml={2}>
+      {buttonText}
+    </Button>
   );
 }
 
