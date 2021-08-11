@@ -40,7 +40,10 @@ export const speedToMilliseconds = (speed: number) => {
   return (1 / speed) * 1000;
 };
 
-export const formatText = (minutes: number, seconds: number) => {
+export const formatText = (counter: TimerData) => {
+  const minutes = counter.min;
+  const seconds = counter.sec;
+
   return (
     (minutes < 10 ? "0" : "") +
     minutes.toString() +
@@ -76,7 +79,7 @@ export const toMMSS = (secs: number) => {
 };
 
 export const formatVal = (val: number) => {
-  return val < 10 ? `0${val}` : val;
+  return val < 10 ? `0${val}` : `${val}`;
 };
 
 export const timerLimit = (val: string) => {

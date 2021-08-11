@@ -126,7 +126,7 @@ const CountdownTimer = (props: CountdownTimerProps) => {
     <Typography
       variant={"h1"}
       className={textStyle}>
-      {formatText(data.min, data.sec)}
+      {formatText(data)}
     </Typography>
   )
 }
