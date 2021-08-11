@@ -7,7 +7,7 @@ import configureStore from "redux-mock-store"
 import thunk from "redux-thunk";
 import MultipliersSection from "../../../../pages/timer/sections/MultipliersSection";
 
-describe("CountdownInputSection Component Tests Suite", () => {
+describe("MultipliersSection Component Tests Suite", () => {
 
   /* Mock values */
   const mockStore = configureStore([thunk]);
@@ -15,14 +15,12 @@ describe("CountdownInputSection Component Tests Suite", () => {
   const multipliers = [1, 1.5, 2];
 
   /* Tests */
-  const renderComponent = (store = mockStore(initialState)) => {
+  const renderComponent = () => {
     render(
-      <Provider store={store}>
+      <Provider store={mockStore(initialState)}>
         <MultipliersSection multipliers={multipliers} defaultIndex={0}/>
       </Provider>
     );
-
-    return store;
   }
 
   test("Initial state", () => {

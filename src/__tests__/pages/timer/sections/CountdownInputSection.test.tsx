@@ -24,7 +24,8 @@ describe("CountdownInputSection Component Tests Suite", () => {
   ];
 
   /* Tests */
-  const renderComponent = (store = mockStore(initialState)) => {
+  const renderComponent = () => {
+    const store = mockStore(initialState);
     render(
       <Provider store={store}>
         <CountdownInputSection label={countdownLabelText} buttonText={startButtonText}/>

@@ -7,7 +7,7 @@ import thunk from "redux-thunk";
 import * as typedSelectorHook from "../../../../hooks/useTypedSelector";
 import CountdownTimerSection from "../../../../pages/timer/sections/CountdownTimerSection";
 
-describe("CountdownInputSection Component Tests Suite", () => {
+describe("CountdownTimerSection Component Tests Suite", () => {
 
   /* Mock values */
   const mockStore = configureStore([thunk]);
