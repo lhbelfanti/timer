@@ -29,10 +29,10 @@ describe("CountdownInputSection Component Tests Suite", () => {
 
   test("Initial state", () => {
     renderComponent();
-    expect(screen.getByRole("textbox"));
-    expect(screen.getByRole("heading"));
-    expect(screen.getByRole("button", {name: "Start"}));
-    expect(screen.getByRole("button", {name: "pause"}));
+    expect(screen.getByRole("textbox")).toBeInTheDocument();
+    expect(screen.getByRole("heading")).toBeInTheDocument();
+    expect(screen.getByRole("button", {name: "Start"})).toBeInTheDocument();
+    expect(screen.getByRole("button", {name: "pause"})).toBeInTheDocument();
     expect(screen.getByRole("button", {name: "1X"})).toBeInTheDocument();
     expect(screen.getByRole("button", {name: "1.5X"})).toBeInTheDocument();
     expect(screen.getByRole("button", {name: "2X"})).toBeInTheDocument();

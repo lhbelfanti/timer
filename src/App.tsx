@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import TimerPage from "./pages/timer/TimerPage";
 import { store } from "./state";
 
-
 const App = () => {
   return (
     <Provider store={store}>
