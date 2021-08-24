@@ -143,7 +143,6 @@ describe("CountdownTimer Component Tests Suite", () => {
         {"type": ActionType.SET_TIMER, "payload": time},
         {"type": ActionType.TRIGGER_TIMER_EVENT, "payload": event}
       ]
-
       return actions;
     }
 
