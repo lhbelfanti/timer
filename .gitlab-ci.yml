@@ -1,9 +1,16 @@
+image: node
+
 pages:
   stage: deploy
+  cache:
+    paths:
+      - node_modules/
   script:
-    - mkdir .public
-    - cp -r * .public
-    - mv .public public
+    - npm install
+    - npm run build
+    - rm -rf public
+    - cp -r * .build
+    - mv .build public
   artifacts:
     paths:
       - public
