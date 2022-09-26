@@ -2,7 +2,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import TextField from "@material-ui/core/TextField";
 import React from "react";
 import { PatternFormat } from "react-number-format";
-import { getSecondsFromMMSS, timerLimit, toMMSS } from "../timerHelper";
+import { getSecondsFromMMSS, toMMSS } from "../timerHelper";
 
 interface CountdownInputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
