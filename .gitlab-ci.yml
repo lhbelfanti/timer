@@ -18,8 +18,8 @@ pages:
     - build
   script:
     - rm -rf public
-    - cp -r * .build
-    - mv .build public
+    - cp -r * build
+    - mv build public
   artifacts:
     paths:
       - public
