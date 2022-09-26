@@ -18,9 +18,13 @@ pages:
     - build
   script:
     - pwd
+    - ls -l
     - rm -rf public
+    - ls -l
     - mkdir public
-    - cp -a build public
+    - ls -l
+    - cp build/* public
+    - ls -l public
   artifacts:
     paths:
       - public
