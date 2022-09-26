@@ -86,5 +86,5 @@ export const timerLimit = (val: string) => {
   const minutes = val.substring(0, 2);
   const seconds = val.substring(2, 4);
 
-  return minutes + (seconds.length ? ":" + seconds : "");
+  return (minutes + (seconds.length ? ":" + seconds : "")).toString();
 };

@@ -1,7 +1,7 @@
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import TextField from "@material-ui/core/TextField";
 import React from "react";
-import NumberFormat from "react-number-format";
+import { PatternFormat } from "react-number-format";
 import { getSecondsFromMMSS, timerLimit, toMMSS } from "../timerHelper";
 
 interface CountdownInputProps {
@@ -34,16 +34,18 @@ const CountdownInput = (props: CountdownInputProps) => {
   };
 
   return (
-    <NumberFormat
-      format={timerLimit}
+    <PatternFormat
+      id="countdown-input"
+      className={classes.countdownInput}
+      value={value}
+      valueIsNumericString={true}
       placeholder="MM:SS"
-      mask={["M", "M", "S", "S"]}
       customInput={TextField}
       onChange={onChange}
       onBlur={onBlur}
-      value={value}
-      id="countdown-input"
-      className={classes.countdownInput}
+      allowEmptyFormatting={true}
+      format={"##:##"}
+      mask={"MMSS"}
     />
   )
 }
