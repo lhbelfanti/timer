@@ -2,6 +2,7 @@
   "name": "timer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lhbelfanti.gitlab.io/timer/",
   "dependencies": {
     "@fontsource/roboto": "^4.5.0",
     "@material-ui/core": "^4.12.1",
