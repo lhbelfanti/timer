@@ -17,13 +17,9 @@ pages:
   dependencies:
     - build
   script:
-    - pwd
-    - ls -l
     - rm -rf public
-    - ls -l
     - mkdir public
-    - ls -l
-    - cp build/* public
+    - mv -v build/* public
     - ls -l public
   artifacts:
     paths:
