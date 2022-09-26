@@ -18,7 +18,7 @@ pages:
     - build
   script:
     - rm -rf public
-    - cp -r * build
+    - ls -l
     - mv build public
   artifacts:
     paths:
