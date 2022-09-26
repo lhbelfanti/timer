@@ -17,13 +17,10 @@ pages:
   dependencies:
     - build
   script:
-    - ls -l
-    - mkdir .public
-    - ls -l
-    - cp -r * .public
-    - ls -l
-    - mv .public public
-    - ls -l public
+    - pwd
+    - rm -rf public
+    - mkdir public
+    - cp -a build public
   artifacts:
     paths:
       - public
