@@ -1,13 +1,19 @@
 image: node:16
 
+stages:
+  - build
+  - deploy
+
 build:
   stage: build
   cache:
     paths:
       - node_modules/
   script:
-    - yarn install
-    - yarn run build
+    - CI=false yarn install
+    - CI=false yarn run build
+    - rm -rf public
+    - mkdir public
   artifacts:
     paths:
       - build
@@ -17,10 +23,7 @@ pages:
   dependencies:
     - build
   script:
-    - rm -rf public
-    - mkdir public
     - mv -v build/* public
-    - ls -l public
   artifacts:
     paths:
       - public
