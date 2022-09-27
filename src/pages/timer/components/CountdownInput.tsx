@@ -24,7 +24,6 @@ const useStyles = makeStyles({
 const CountdownInput = (props: CountdownInputProps) => {
   const classes = useStyles();
   const {onChange, value} = props;
-  console.log(value)
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
