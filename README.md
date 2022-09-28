@@ -1,5 +1,7 @@
 # Countdown Timer
 
+<a href="https://lhbelfanti.gitlab.io/timer/"><strong>➥ Live Demo</strong></a>
+
 ## Preview
 
 ![Countdown Timer png preview](images/timer.png)
