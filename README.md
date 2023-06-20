@@ -12,10 +12,10 @@
 
 ---
 # Countdown Timer
-<img src="./media/timer.png" width="200" alt="Umbrella project preview" />
+<img src="./media/timer.png" width="200" alt="Timer project preview" />
 
 ## Preview
-<img src="./media/timer.gif" width="500" alt="Umbrella project preview" />
+<img src="./media/timer.gif" width="500" alt="Timer project preview" />
 
 ## Tech stack
 - Typescript
