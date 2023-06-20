@@ -1,22 +1,29 @@
-# Countdown Timer
+<p align="center">
+  <img src="media/timer-logo.png" width="100" alt="Repository logo" />
+</p>
+<h3 align="center">Timer</h3>
+<p align="center">Simple countdown timer<p>
+<p align="center"><a href="https://lhbelfanti.gitlab.io/timer/"><strong>➥ Live Demo</strong></a></p>
+<p align="center">
+    <img src="https://img.shields.io/github/repo-size/lhbelfanti/timer?label=Repo%20size" alt="Repo size" />
+    <img src="https://img.shields.io/github/license/lhbelfanti/timer?label=License" alt="License" />
 
-<a href="https://lhbelfanti.gitlab.io/timer/"><strong>➥ Live Demo</strong></a>
+</p>
+
+---
+# Countdown Timer
+<img src="./media/timer.png" width="200" alt="Umbrella project preview" />
 
 ## Preview
-
-![Countdown Timer png preview](images/timer.png)
-
-![Countdown Timer gif preview](./images/timer.gif)
+<img src="./media/timer.gif" width="500" alt="Umbrella project preview" />
 
 ## Tech stack
-
 - Typescript
 - React
 - React Redux
 - Material UI
 
 ## How is it composed?
-
 This is a Single Page Application, so, it has a main component called `TimerPage` and that page has 3 different
 sections:
 
@@ -27,10 +34,9 @@ sections:
 
 A deeper explanation in the following image.
 
-![Components explanation](images/components.png)
+![Components explanation](media/components.png)
 
 ## Redux setup
-
 All the classes for the redux setup are inside the [state](./src/state) folder.
 
 Basically, there are 4 different `Action Creators`, that trigger an `Action`, using the different `Action Types`. Those
@@ -38,9 +44,13 @@ actions are received by the `Reducers` and using the data of the payload, it cha
 
 See the following image to get a deeper insight of the setup.
 
-![Redux setup](images/redux.png)
+![Redux setup](media/redux.png)
 
 ## Configuration values
-
 All the configuration values are defined in a single [config.json](./src/pages/config.json). All the properties have a
 self-explanatory name.
+
+---
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
